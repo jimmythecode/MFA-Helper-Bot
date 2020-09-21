@@ -10,7 +10,8 @@ const r = new Snoowrap({
     clientId: process.env.CLIENT_ID,
     clientSecret: process.env.CLIENT_SECRET,
     username: process.env.REDDIT_USER,
-    password: process.env.REDDIT_PASS
+    password: process.env.REDDIT_PASS,
+    refreshToken: process.env.REFRESH_TOKEN
 });
 
 const stream = new CommentStream(r, {
