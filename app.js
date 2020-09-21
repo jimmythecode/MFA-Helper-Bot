@@ -1,7 +1,7 @@
 require('dotenv').config();
 const Snoowrap = require('snoowrap');
 const { CommentStream } = require("snoostorm");
-const writeReqObjectToFile = require('./writefiles/writeFile')
+// const writeReqObjectToFile = require('./writefiles/writeFile')
 
 
 const r = new Snoowrap({
