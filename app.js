@@ -14,18 +14,18 @@ const r = new Snoowrap({
 
 const stream = new CommentStream(r, {
     subreddit: "testingground4bots",
-    limit: 3,
+    limit: 20,
     pollTime: 1000,
 });
 
 stream.on("item", comment => {
-    // if (comment.author.name === 'JimmyTheCode') {
-
+    if (comment.author.name === 'JimmyTheCode') {
+        console.log("running the stream");
         // writeReqObjectToFile(comment, 'comment3.json')
         if (comment.body === 't-shirt') {
             comment.reply('got-shirt');
         }
-    // }
+    }
 })
 /////////////////////
 // https://dev.to/seiyria/making-a-reddit-reply-bot-f55 - this guy does a bot that listens live
