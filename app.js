@@ -16,8 +16,8 @@ const r = new Snoowrap({
 
 const stream = new CommentStream(r, {
     subreddit: "testingground4bots",
-    limit: 20,
-    pollTime: 1000,
+    limit: 5,
+    pollTime: 5000,
 });
 
 stream.on("item", comment => {
@@ -25,7 +25,11 @@ stream.on("item", comment => {
         console.log("running the stream");
         // writeReqObjectToFile(comment, 'comment3.json')
         if (comment.body === 't-shirt') {
-            comment.reply('got-shirt');
+            try {
+                comment.reply('got-shirt');
+            } catch (error) {
+                console.error('comment.reply() attempt did not work', error);
+            }
         }
     }
 })
