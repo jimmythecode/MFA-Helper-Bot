@@ -20,7 +20,8 @@ const stream = new CommentStream(r, {
 
 stream.on("item", comment => {
     // if (comment.author.name === 'JimmyTheCode') {
-        writeReqObjectToFile(comment, 'comment3.json')
+
+        // writeReqObjectToFile(comment, 'comment3.json')
         if (comment.body === 't-shirt') {
             comment.reply('got-shirt');
         }
