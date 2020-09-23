@@ -15,7 +15,7 @@ const r = new snoowrap({
 
 
 const stream = new CommentStream(r, {
-    subreddit: "testingground4bots",
+    subreddit: "malefashionadvice",
     limit: 30,
     pollTime: 30000
 });
@@ -44,7 +44,7 @@ stream.on("item", async comment => {
     if (!isAuthorTrue && doesBodyInclude && isWithinAnHour && !alreadyReplied) {
         // writeReqObjectToFile(comment, 'GettingReplies')
         try {
-            console.log(`Replying to comment: ${comment.body.substring(0, 20)}... ${comment.permalink}`);
+            console.log(`Replying to comment: ${comment.body.substring(0, 20)}... https://www.reddit.com${comment.permalink}`);
             comment.reply(`These links might be useful from the [MFA Wiki](https://www.reddit.com/r/malefashionadvice/wiki/itemguides#wiki_clothing):\n\n*  [A Comprehensive Guide To Basic White T-Shirts](https://www.reddit.com/r/malefashionadvice/comments/clo2um/a_comprehensive_guide_to_basic_white_tshirts/)\n\n*  [Your Favorite ___ for $___: Tee Shirts](https://www.reddit.com/r/malefashionadvice/comments/f9vrkb/your_favorite_for_tee_shirts/)`)
         } catch (error) {
             console.error('comment.reply() attempt did not work', error);
