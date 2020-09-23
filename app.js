@@ -4,7 +4,7 @@ const snoowrap = require('snoowrap');
 const { CommentStream } = require("snoostorm");
 const { DateTime } = require("luxon");
 let dt = DateTime.local()
-const writeReqObjectToFile = require('./writefiles/writeFile')
+// const writeReqObjectToFile = require('./writefiles/writeFile')
 
 const r = new snoowrap({
     userAgent: "JTC User Agent 1",
