@@ -40,7 +40,7 @@ stream.on("item", async comment => {
 
     // console.log(isAuthorTrue, doesBodyInclude, isWithinAnHour, 'already replied?', alreadyReplied);
     // console.log(comment.body.substring(0, 20));
-    console.log(`Looking at comment from ${comment.author}`);
+    console.log(`Looking at comment from ${comment.author.name}`);
     if (!isAuthorTrue && doesBodyInclude && isWithinAnHour && !alreadyReplied) {
         // writeReqObjectToFile(comment, 'GettingReplies')
         try {
