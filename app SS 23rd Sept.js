@@ -16,8 +16,8 @@ const r = new snoowrap({
 
 const stream = new CommentStream(r, {
     subreddit: "testingground4bots",
-    limit: 30,
-    pollTime: 5000
+    limit: 3,
+    pollTime: 1000
 });
 
 stream.on("item", async comment => {
@@ -26,7 +26,7 @@ stream.on("item", async comment => {
     let dateFormat = new Date(comment.created_utc * 1000)
     let isWithinAnHour = (currentDate - dateFormat) / 1000 / 60 / 60 < 1
     // Don't reply to your own comments
-    let isAuthorTrue = ['MFA-Helper-Bot'].indexOf(comment.author.name) >= 0
+    let isAuthorTrue = ['MFA-Helper-Bot', 'JimmyTheCode'].indexOf(comment.author.name) >= 0
     // Don't reply if we've already replied to this comment
     let alreadyReplied = false;
     let expandedReplies = await comment.expandReplies({ limit: Infinity, depth: Infinity })
@@ -40,12 +40,10 @@ stream.on("item", async comment => {
 
     // console.log(isAuthorTrue, doesBodyInclude, isWithinAnHour, 'already replied?', alreadyReplied);
     // console.log(comment.body.substring(0, 20));
-    console.log(`Looking at comment from ${comment.author}`);
-    if (!isAuthorTrue && doesBodyInclude && isWithinAnHour && !alreadyReplied) {
+    if (isAuthorTrue && doesBodyInclude && isWithinAnHour && !alreadyReplied) {
         // writeReqObjectToFile(comment, 'GettingReplies')
         try {
-            console.log(`Replying to comment: ${comment.body.substring(0, 20)}... ${comment.permalink}`);
-            comment.reply(`These links might be useful from the [MFA Wiki](https://www.reddit.com/r/malefashionadvice/wiki/itemguides#wiki_clothing):\n\n*  [A Comprehensive Guide To Basic White T-Shirts](https://www.reddit.com/r/malefashionadvice/comments/clo2um/a_comprehensive_guide_to_basic_white_tshirts/)\n\n*  [Your Favorite ___ for $___: Tee Shirts](https://www.reddit.com/r/malefashionadvice/comments/f9vrkb/your_favorite_for_tee_shirts/)`)
+            comment.reply(`REPLY FROM BOT`)
         } catch (error) {
             console.error('comment.reply() attempt did not work', error);
         }
