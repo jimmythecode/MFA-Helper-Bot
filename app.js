@@ -17,7 +17,7 @@ const r = new snoowrap({
 const stream = new CommentStream(r, {
     subreddit: "testingground4bots",
     limit: 30,
-    pollTime: 5000
+    pollTime: 30000
 });
 
 stream.on("item", async comment => {
